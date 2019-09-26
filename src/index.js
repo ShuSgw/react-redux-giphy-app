@@ -1,12 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// server
+import * as serviceWorker from "./serviceWorker";
+// react
+import React from "react";
+import ReactDOM from "react-dom";
+// modules
+import App from "./App";
+import giphyApi from "./APIs/giphyAPI";
+// store
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+// reducers
+import reducers from "./reducers";
+// redux-thunk
+import thunk from "redux-thunk";
+import {applyMiddleware} from "redux";
+// actions
+import getUrls from "./actions/getUrls";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const middleWares = [thunk];
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+const store = createStore(reducers, applyMiddleware(...middleWares));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+
 serviceWorker.unregister();
