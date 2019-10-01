@@ -4,13 +4,13 @@ import {connect} from "react-redux";
 const ImageList = props => {
   const list = props.urlList.imageURL.map(url => {
     return (
-      <li key={url}>
-        <img src={url} alt="" />
+      <li className="item" key={url}>
+        <img className="image" src={url} alt="" />
       </li>
     );
   });
 
-  return <ul>{list}</ul>;
+  return <ul className="list">{list}</ul>;
 };
 const ConnectedImageList = connect(s => ({urlList: s}))(ImageList);
 export default ConnectedImageList;

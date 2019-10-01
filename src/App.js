@@ -7,7 +7,7 @@ import ConnectedSearch from "./components/Search";
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <ConnectedHeader />
       <ConnectedSearch />
       <ConnectedImageList />

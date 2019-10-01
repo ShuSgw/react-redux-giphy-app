@@ -1,6 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import getUrls from "../actions/getUrls";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 class Search extends React.Component {
   constructor(props) {
@@ -11,13 +13,21 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
+        <form onSubmit={this.handleSubmit} className="form">
+          <TextField
+            className="textfield"
             onChange={this.handleChange}
             value={this.state.title}
             type="text"
           />
-          <input type="submit" value="Search" />
+          <Button
+            className="button"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            {this.props.seach.waitingText}
+          </Button>
         </form>
       </div>
     );
